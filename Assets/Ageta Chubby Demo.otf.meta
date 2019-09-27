@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: b3ecfd7d407cc4e69a065a604b308e01
+timeCreated: 1569526530
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Ageta Chubby Demo
+  fontNames:
+  - Ageta Chubby Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2f8d543b206da4675bb7c7954348e5ac, type: 3}
+  - {fileID: 12800000, guid: 55fb116ca2bf84bf6ae0130d6901a666, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
