@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8c1778bf8872e4779889949a3567df8f
+timeCreated: 1569864437
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zero Prime Gradient
+  fontNames:
+  - Zero Prime Gradient
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

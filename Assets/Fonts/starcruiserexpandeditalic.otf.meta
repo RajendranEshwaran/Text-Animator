@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 44a775270532d4391af95b4012222195
+timeCreated: 1569864477
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Starcruiser Expanded Italic
+  fontNames:
+  - Starcruiser Expanded Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

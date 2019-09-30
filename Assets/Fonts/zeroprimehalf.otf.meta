@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2bda221dd89344a8f84f242e5233ceb3
+timeCreated: 1569864437
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zero Prime Halftone
+  fontNames:
+  - Zero Prime Halftone
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

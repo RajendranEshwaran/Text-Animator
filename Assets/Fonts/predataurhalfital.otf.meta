@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8369000fdd9a345888839c4374a5f87a
+timeCreated: 1569864456
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Predataur Halftone Italic
+  fontNames:
+  - Predataur Halftone Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

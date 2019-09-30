@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 562f6a4f8dc094952addb6423a055e91
+timeCreated: 1569864517
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: American Kestrel Expanded
+  fontNames:
+  - American Kestrel Expanded
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

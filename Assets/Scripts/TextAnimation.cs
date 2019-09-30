@@ -138,7 +138,7 @@ public class TextAnimation : MonoBehaviour {
 	}
 
 	IEnumerator Wait(){
-		yield return new WaitForSeconds (0.8f);
+		yield return new WaitForSeconds (1.0f);
 		spawn ();
 
 	}
@@ -152,6 +152,7 @@ public class TextAnimation : MonoBehaviour {
 	public void gameOver()
 	{
 		//gameoverFlag = true;
+
 		SceneManager.LoadScene ("GameOver");
 	}
 
@@ -159,7 +160,17 @@ public class TextAnimation : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (0.5f);
 		objectSpawn = false;
+		SoundManager.playSound ("spawn");
 	}
+
+	IEnumerator positiveSoundDelay()
+	{
+		yield return new WaitForSeconds (0.2f);
+		SoundManager.playSound ("positive");
+	}
+
+		
+
 	public void spawn()
 	{
 		
@@ -189,7 +200,7 @@ public class TextAnimation : MonoBehaviour {
 		isAnimatingDown = false;
 		isAnimatingUp = true;
 		objectSpawn = true;
-		//Debug.Log("Up");
+		StartCoroutine (positiveSoundDelay());
 		StartCoroutine (Wait());
 	}
 
@@ -202,7 +213,7 @@ public class TextAnimation : MonoBehaviour {
 		isAnimatingDown = true;
 		isAnimatingUp = false;
 		objectSpawn = true;
-		//Debug.Log("Down");
+		StartCoroutine (positiveSoundDelay());
 		StartCoroutine (Wait());
 	}
 

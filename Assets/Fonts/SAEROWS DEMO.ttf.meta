@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2f9261d65956340508d7dd07cd513c4e
+timeCreated: 1569864380
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: SAEROWS  DEMO
+  fontNames:
+  - SAEROWS  DEMO
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
