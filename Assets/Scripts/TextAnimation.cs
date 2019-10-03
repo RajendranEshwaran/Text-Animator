@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
-
-
-public class TextAnimation : MonoBehaviour {
+public class TextAnimation : MonoBehaviour
+{
 
 	public Text timer_txt;
 	public Text score_txt;
@@ -20,14 +20,14 @@ public class TextAnimation : MonoBehaviour {
 	private bool isAnimatingStart = false;
 
 
-	private int gameTime=5;
-	public int CountDownSeconds = 5; 
-	private float startTime = 0; 
-	private float restSeconds = 0; 
-	private int roundedRestSeconds = 0; 
-	private float displaySeconds = 0; 
-	private float displayMinutes = 0; 
-	private float Timeleft = 0; 
+	private int gameTime = 5;
+	public int CountDownSeconds = 5;
+	private float startTime = 0;
+	private float restSeconds = 0;
+	private int roundedRestSeconds = 0;
+	private float displaySeconds = 0;
+	private float displayMinutes = 0;
+	private float Timeleft = 0;
 	string timetext = "";
 
 
@@ -37,23 +37,33 @@ public class TextAnimation : MonoBehaviour {
 
 	private bool objectSpawn = false;
 	private bool gameoverFlag = false;
-	private int  answerFlag = 0;
+	private int answerFlag = 0;
 	private int userFlag = 0;
 	private int swipeDetected = 0;
 
+	private string path;
+	private string jsonstring;
+	//public SpawnObjectsList sol = new SpawnObjectsList();
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 
 
 		textAnimator = GetComponent<Animator> ();
 
-		CountDownSeconds=gameTime;
+		CountDownSeconds = gameTime;
 		startTime = Time.time;
+
 		spawn ();
+
+
 	}
-	
+
+
+
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{		
 // TIMER START
 		if (!gameoverFlag) {
@@ -76,7 +86,6 @@ public class TextAnimation : MonoBehaviour {
 			if (roundedRestSeconds < 1) {
 				userFlag = 0;
 				if (swipeDetected == 0) {
-					//gameoverFlag = true;
 					gameOver ();
 				} else {
 					ResetTimer ();
@@ -85,15 +94,13 @@ public class TextAnimation : MonoBehaviour {
 		}
 
 // TIMER STOP
-		// SWIPE START
+// SWIPE START
 
-		if (Input.GetMouseButtonDown (0)) 
-		{
+		if (Input.GetMouseButtonDown (0)) {
 			//save began touch 2d point
 			firstPressPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 		}
-		if (Input.GetMouseButtonUp (0)) 
-		{
+		if (Input.GetMouseButtonUp (0)) {
 			//save ended touch 2d point
 			secondPressPos = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 			//create vector from the two points
@@ -101,69 +108,63 @@ public class TextAnimation : MonoBehaviour {
 			//normalize the 2d vector
 			currentSwipe.Normalize ();
 			//swipe upwards
-			if(!objectSpawn)
-			{
-			if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) 
-			{
-				userFlag = 1;
-				swipeDetected = 1;
-				if (answerFlag == 1 && userFlag == 1 ) {
-					userFlag = 0;
-					score = score + 10;
-					score_txt.text = score.ToString ();
-					animationUp ();
+			if (!objectSpawn) {
+				if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
+					userFlag = 1;
+					swipeDetected = 1;
+					if (answerFlag == 1 && userFlag == 1) {
+						userFlag = 0;
+						score = score + 10;
+						score_txt.text = score.ToString ();
+						animationUp ();
+					} else if (answerFlag == 2) {
+						gameOver ();
+					}
 				}
-				else if(answerFlag == 2)
-				{
-					gameOver ();
-				}
-			}
-			//swipe down
-			if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) 
-			{
-				userFlag = 2;
-				swipeDetected = 2;
-				if (answerFlag == 2 && userFlag == 2 ) {
-					userFlag = 0;
-					score = score + 10;
-					score_txt.text = score.ToString ();
-					animationDown ();
-				} else if (answerFlag == 1) {
-					gameOver ();
-				}
+				//swipe down
+				if (currentSwipe.y < 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f) {
+					userFlag = 2;
+					swipeDetected = 2;
+					if (answerFlag == 2 && userFlag == 2) {
+						userFlag = 0;
+						score = score + 10;
+						score_txt.text = score.ToString ();
+						animationDown ();
+					} else if (answerFlag == 1) {
+						gameOver ();
+					}
 				}
 
 			}
 		}
 	}
 
-	IEnumerator Wait(){
+	IEnumerator Wait ()
+	{
 		yield return new WaitForSeconds (1.0f);
 		spawn ();
 
 	}
 
-	public void ResetTimer()
+	public void ResetTimer ()
 	{
-		startTime=Time.time;
+		startTime = Time.time;
 		CountDownSeconds = gameTime;
 	}
 
-	public void gameOver()
+	public void gameOver ()
 	{
-		//gameoverFlag = true;
-
 		SceneManager.LoadScene ("GameOver");
 	}
 
-	IEnumerator spawnDelay()
+	IEnumerator spawnDelay ()
 	{
 		yield return new WaitForSeconds (0.5f);
 		objectSpawn = false;
 		SoundManager.playSound ("spawn");
 	}
 
-	IEnumerator positiveSoundDelay()
+	IEnumerator positiveSoundDelay ()
 	{
 		yield return new WaitForSeconds (0.2f);
 		SoundManager.playSound ("positive");
@@ -171,7 +172,7 @@ public class TextAnimation : MonoBehaviour {
 
 		
 
-	public void spawn()
+	public void spawn ()
 	{
 		
 		ResetTimer ();
@@ -191,7 +192,7 @@ public class TextAnimation : MonoBehaviour {
 
 	}
 
-	public void animationUp()
+	public void animationUp ()
 	{
 		textAnimator.SetBool ("isAnimatingUp", true);
 		textAnimator.SetBool ("isAnimatingSpawn", false);
@@ -200,11 +201,11 @@ public class TextAnimation : MonoBehaviour {
 		isAnimatingDown = false;
 		isAnimatingUp = true;
 		objectSpawn = true;
-		StartCoroutine (positiveSoundDelay());
-		StartCoroutine (Wait());
+		StartCoroutine (positiveSoundDelay ());
+		StartCoroutine (Wait ());
 	}
 
-	public void animationDown()
+	public void animationDown ()
 	{
 		textAnimator.SetBool ("isAnimatingDown", true);
 		textAnimator.SetBool ("isAnimatingSpawn", false);
@@ -213,42 +214,27 @@ public class TextAnimation : MonoBehaviour {
 		isAnimatingDown = true;
 		isAnimatingUp = false;
 		objectSpawn = true;
-		StartCoroutine (positiveSoundDelay());
-		StartCoroutine (Wait());
+		StartCoroutine (positiveSoundDelay ());
+		StartCoroutine (Wait ());
 	}
 
 
-	public void randomShuffle()
+	public void randomShuffle ()
 	{
-		
-			// int[] a = new int[] { 1,2,3,4,5,6,7,8,9,10 };
-			string[] ans = new string[]{ "down", "down", "down", "down", "up", "up", "down", "up", "down", "up" };
-			string[] qus = new string[] {
-				"RAJAY",
-				"GMS",
-				"BOOKS",
-				"CRICKET",
-				"SPIDERMAN",
-				"MONEY",
-				"GAMES",
-				"FLIGHT",
-				"WEBSITE",
-				"BALL"
-			};
 
-			int rnd = UnityEngine.Random.Range (0, 10);
+		int rnd = UnityEngine.Random.Range (0, 204);
+		Questions qus = new Questions ();
+		Checker chk = new Checker ();
+		spawn_txt.text = qus.question [rnd];
+		string answerTxt = chk.check [rnd];
 
-			//spawnvalue_txt.text = qus [rnd];
-
-			spawn_txt.text = qus [rnd];
-			string answerTxt = ans [rnd];
-
-			if (string.Compare (answerTxt, "up") == 0) {
-				answerFlag = 1;
-			} else {
-				answerFlag = 2;
-			}
-			Debug.Log ("Answer Flag" + answerFlag);
+		if (string.Compare (answerTxt, "up") == 0) {
+			answerFlag = 1;
+		} else {
+			answerFlag = 2;
 		}
+		Debug.Log ("Answer Flag" + answerFlag);
+	}
 
 }
+
