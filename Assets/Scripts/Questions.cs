@@ -119,7 +119,7 @@ public class Questions {
 		"FRIEND",   
 		"WIVES",   
 		"CAP", 
-		"HOT AIR BALLOON",   
+		"HOT BALLOON",   
 		"WEATHER BALLOON", 
 		"HELIUM BALLOON",   
 		"AIR",   

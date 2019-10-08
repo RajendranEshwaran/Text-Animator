@@ -12,6 +12,9 @@ public class TextAnimation : MonoBehaviour
 	public Text score_txt;
 	public Text spawn_txt;
 	private int score = 0;
+	public Image bg1;
+	public Image bg2;
+	private float speed = 0.5f;
 
 	private Animator textAnimator;
 	private bool isAnimatingSpawn = false;
@@ -45,6 +48,7 @@ public class TextAnimation : MonoBehaviour
 	private string jsonstring;
 	//public SpawnObjectsList sol = new SpawnObjectsList();
 
+	private float startPos = 750.0f;
 	// Use this for initialization
 	void Start ()
 	{
@@ -65,6 +69,10 @@ public class TextAnimation : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{		
+//		if (bg1.transform.position.x < startPos) {
+//			bg1.transform.position = Vector2 (Time.time * speed, 0);
+//		}
+
 // TIMER START
 		if (!gameoverFlag) {
 			Timeleft = Time.time - startTime;
@@ -116,6 +124,7 @@ public class TextAnimation : MonoBehaviour
 						userFlag = 0;
 						score = score + 10;
 						score_txt.text = score.ToString ();
+						startParticle.starParticlePlay ();
 						animationUp ();
 					} else if (answerFlag == 2) {
 						gameOver ();
@@ -128,6 +137,7 @@ public class TextAnimation : MonoBehaviour
 					if (answerFlag == 2 && userFlag == 2) {
 						userFlag = 0;
 						score = score + 10;
+						startParticle.starParticlePlay();
 						score_txt.text = score.ToString ();
 						animationDown ();
 					} else if (answerFlag == 1) {
@@ -141,7 +151,7 @@ public class TextAnimation : MonoBehaviour
 
 	IEnumerator Wait ()
 	{
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (0.5f);
 		spawn ();
 
 	}
@@ -225,7 +235,12 @@ public class TextAnimation : MonoBehaviour
 		int rnd = UnityEngine.Random.Range (0, 204);
 		Questions qus = new Questions ();
 		Checker chk = new Checker ();
-		spawn_txt.text = qus.question [rnd];
+		string tempString = qus.question [rnd];
+
+		if(tempString.Length > 10)
+			tempString = tempString.Replace (" ", " " + System.Environment.NewLine);
+		
+		spawn_txt.text = tempString;
 		string answerTxt = chk.check [rnd];
 
 		if (string.Compare (answerTxt, "up") == 0) {
@@ -238,3 +253,4 @@ public class TextAnimation : MonoBehaviour
 
 }
 
+ 

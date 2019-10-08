@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
 
 
 	public static AudioClip spawnSound, positiveSound, negativeSound;
 	static AudioSource audiosource;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 
 		spawnSound = Resources.Load<AudioClip> ("spawn");
 		positiveSound = Resources.Load<AudioClip> ("positive");
@@ -18,14 +20,14 @@ public class SoundManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		
 	}
 
-	public static void playSound(string clip)
+	public static void playSound (string clip)
 	{
-		switch (clip)
-		{
+		switch (clip) {
 		case "spawn":
 			audiosource.PlayOneShot (spawnSound);
 			break;
