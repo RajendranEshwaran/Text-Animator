@@ -14,6 +14,6 @@ public class MainScene : MonoBehaviour {
 	IEnumerator loadScene()
 	{
 		yield return new WaitForSeconds (2.0f);
-		SceneManager.LoadScene ("Instruction");
+		SceneManager.LoadScene ("MainScene");
 	}
 }
