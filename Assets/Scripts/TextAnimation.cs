@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+
 public class TextAnimation : MonoBehaviour
 {
 
@@ -62,7 +63,8 @@ public class TextAnimation : MonoBehaviour
 		spawn ();
 
 
-	}
+       
+    }
 
 
 
@@ -122,8 +124,9 @@ public class TextAnimation : MonoBehaviour
 					swipeDetected = 1;
 					if (answerFlag == 1 && userFlag == 1) {
 						userFlag = 0;
-						score = score + 10;
-						score_txt.text = score.ToString ();
+						score = score + 5;
+                        Unlock(score);
+                        score_txt.text = score.ToString ();
 						startParticle.starParticlePlay ();
 						animationUp ();
 					} else if (answerFlag == 2) {
@@ -136,7 +139,8 @@ public class TextAnimation : MonoBehaviour
 					swipeDetected = 2;
 					if (answerFlag == 2 && userFlag == 2) {
 						userFlag = 0;
-						score = score + 10;
+						score = score + 5;
+                        Unlock(score);
 						startParticle.starParticlePlay();
 						score_txt.text = score.ToString ();
 						animationDown ();
@@ -149,7 +153,82 @@ public class TextAnimation : MonoBehaviour
 		}
 	}
 
-	IEnumerator Wait ()
+    public void postLeaderBoard(int score)
+    {
+        setting.AddScoreToLeaderboard(GPGSIds.leaderboard_flyupanddownboard, score);
+    }
+    public void Unlock(int score)
+    {
+        if(score == 20)
+            setting.UnlockAchievement(GPGSIds.achievement_a_cool_reward);
+        if (score == 50)
+            setting.UnlockAchievement(GPGSIds.achievement_hungry_man);
+        if (score == 75)
+            setting.UnlockAchievement(GPGSIds.achievement_fabulous);
+        if (score == 100)
+            setting.UnlockAchievement(GPGSIds.achievement_marvelous);
+        if (score == 125)
+            setting.UnlockAchievement(GPGSIds.achievement_pretty_skilled);
+        if (score == 150)
+            setting.UnlockAchievement(GPGSIds.achievement_surprise);
+        if (score == 175)
+            setting.UnlockAchievement(GPGSIds.achievement_unlocked_facebook);
+        if (score == 200)
+            setting.UnlockAchievement(GPGSIds.achievement_unlock_twitter);
+        if (score == 225)
+            setting.UnlockAchievement(GPGSIds.achievement_magnificent_man);
+        if (score == 250)
+            setting.UnlockAchievement(GPGSIds.achievement_hero);
+        if (score == 275)
+            setting.UnlockAchievement(GPGSIds.achievement_specialist);
+        if (score == 300)
+            setting.UnlockAchievement(GPGSIds.achievement_alien);
+        if (score == 325)
+            setting.UnlockAchievement(GPGSIds.achievement_master_mind);
+        if (score == 350)
+            setting.UnlockAchievement(GPGSIds.achievement_computer_mind);
+        if (score == 375)
+            setting.UnlockAchievement(GPGSIds.achievement_dreamer);
+        if (score == 400)
+            setting.UnlockAchievement(GPGSIds.achievement_great_ability);
+        if (score == 425)
+            setting.UnlockAchievement(GPGSIds.achievement_brilliance);
+        if (score == 450)
+            setting.UnlockAchievement(GPGSIds.achievement_great_intelligent);
+        if (score == 475)
+            setting.UnlockAchievement(GPGSIds.achievement_talented);
+        if (score == 500)
+            setting.UnlockAchievement(GPGSIds.achievement_brainy);
+        if (score == 525)
+            setting.UnlockAchievement(GPGSIds.achievement_great_capacity);
+        if (score == 550)
+            setting.UnlockAchievement(GPGSIds.achievement_expert);
+        if (score == 575)
+            setting.UnlockAchievement(GPGSIds.achievement_faculty_mind);
+        if (score == 600)
+            setting.UnlockAchievement(GPGSIds.achievement_power);
+        if (score == 625)
+            setting.UnlockAchievement(GPGSIds.achievement_super_ability);
+        if (score == 675)
+            setting.UnlockAchievement(GPGSIds.achievement_einstein);
+        if (score == 725)
+            setting.UnlockAchievement(GPGSIds.achievement_master_giant);
+        if (score == 750)
+            setting.UnlockAchievement(GPGSIds.achievement_master);
+        if (score == 775)
+            setting.UnlockAchievement(GPGSIds.achievement_egg_head);
+        if (score == 825)
+            setting.UnlockAchievement(GPGSIds.achievement_bright_spark);
+        if (score == 875)
+            setting.UnlockAchievement(GPGSIds.achievement_encyclopedia);
+        if (score == 925)
+            setting.UnlockAchievement(GPGSIds.achievement_brainbox);
+        if (score == 975)
+            setting.UnlockAchievement(GPGSIds.achievement_super_man);
+
+    }
+
+    IEnumerator Wait ()
 	{
 		yield return new WaitForSeconds (0.5f);
 		spawn ();
@@ -164,7 +243,9 @@ public class TextAnimation : MonoBehaviour
 
 	public void gameOver ()
 	{
-		SceneManager.LoadScene ("GameOver");
+        postLeaderBoard(score);
+
+        SceneManager.LoadScene ("GameOver");
 	}
 
 	IEnumerator spawnDelay ()
@@ -251,6 +332,7 @@ public class TextAnimation : MonoBehaviour
 		Debug.Log ("Answer Flag" + answerFlag);
 	}
 
+
+   
 }
 
- 
